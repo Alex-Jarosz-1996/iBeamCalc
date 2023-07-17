@@ -1,19 +1,27 @@
-// Importing the built-in 'http' module
-const http = require('http');
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
 
-// Creating a server object
-const server = http.createServer((req, res) => {
-  // Setting the response header
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  
-  // Writing the response body
-  res.write('Hello, World!');
-  
-  // Ending the response
-  res.end();
+const app = express();
+
+// Set up body-parser middleware to parse request bodies
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve static files from the 'public' folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Route for handling GET requests to the homepage
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Listening on port 3000
-server.listen(3000, () => {
-  console.log('Server is running on port 3000');
+// Route for handling POST requests
+app.post('/submit', (req, res) => {
+  const { name, email } = req.body;
+  res.send(`Thank you for submitting! Your name is ${name} and your email is ${email}.`);
+});
+
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
