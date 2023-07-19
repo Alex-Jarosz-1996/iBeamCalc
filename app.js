@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 // Define the POST request route for handling the form submission
-app.post('/submit', (req, res) => {
+app.post('/', (req, res) => {
   // Access form data using req.body
   const sigma = req.body.sigma;
   const forceApplied = req.body.force_applied;
