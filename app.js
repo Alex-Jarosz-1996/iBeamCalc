@@ -1,27 +1,18 @@
+// app.js
 const express = require('express');
-const bodyParser = require('body-parser');
+const app = express();
 const path = require('path');
 
-const app = express();
-
-// Set up body-parser middleware to parse request bodies
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// Serve static files from the 'public' folder
+// Define the static files folder (assuming your HTML, CSS, and JS files are in the "public" folder)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Route for handling GET requests to the homepage
+// Define the GET request route for serving the HTML file
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Route for handling POST requests
-app.post('/submit', (req, res) => {
-  const { name, email } = req.body;
-  res.send(`Thank you for submitting! Your name is ${name} and your email is ${email}.`);
-});
-
-const port = 3000;
+// Start the server
+const port = 3000; // Choose the port you prefer
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}/`);
 });

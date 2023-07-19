@@ -1,21 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Simple Node.js App</title>
-  <link rel="stylesheet" href="/styles.css">
+    <title>I-beam Calculator Flask App</title>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/script.js"></script>
 </head>
 <body>
-  <h1>Welcome to our Simple Node.js App</h1>
-  
-  <h2>Submit your information:</h2>
-  <form action="/submit" method="post">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-    <br>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <br>
-    <button type="submit">Submit</button>
-  </form>
+    <h1>I-beam Calculator Flask App!</h1>
+    
+    <form method="POST">
+        <div class="tooltip">&#x1F6C8;
+            <span class="tooltiptext">Max stress not allowed to exceed (MPa).</span>
+        </div>
+        <label for="sigma">Sigma (N/mm^2):</label>
+        <input type="text" id="sigma" name="sigma" required><br><br>
+        
+        <div class="tooltip">&#x1F6C8;
+            <span class="tooltiptext">Force Applied (N) at point.</span>
+        </div>
+        <label for="force_applied">Force Applied (N):</label>
+        <input type="text" id="force_applied" name="force_applied" required><br><br>
+        
+        <div class="tooltip">&#x1F6C8;
+            <span class="tooltiptext">Maximum thickness of I-beam (mm)</span>
+        </div>
+        <label for="beam_thick">Beam Thickness (mm):</label>
+        <input type="text" id="beam_thick" name="beam_thick" required><br><br>
+        
+        <div class="tooltip">&#x1F6C8;
+            <span class="tooltiptext">
+                Select the number of distance values with which to determine
+                ideal height and width values at the given distance.
+            </span>
+        </div>
+        <label for="num_distances">Number of Distances:</label>
+        <select id="num_distances" name="num_distances">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select><br><br>
+        
+        <div id="dynamic_fields"></div>
+        
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
