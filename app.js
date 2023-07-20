@@ -40,7 +40,7 @@ app.post('/', (req, res) => {
   console.log(results); // Example: Display the results of the ibeam function
 
   // Respond with a confirmation message or redirect to another page
-  res.send('Form submission successful!');
+  res.sendFile(path.join(__dirname, 'views', 'distance.html'));
 });
 
 // Start the server
