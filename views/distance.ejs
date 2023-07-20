@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Distance Results</title>
+    <title>I-beam Calculator Flask App Calculation</title>
+    <link rel="stylesheet" type="text/css" href="../public/css/distance_styles.css">
 </head>
 <body>
-  <h1>Distance Results</h1>
-  <p>Sigma (N/mm^2): <%= sigma %></p>
-  <p>Force Applied (N): <%= forceApplied %></p>
-  <p>Beam Thickness (mm): <%= beamThickness %></p>
-  <p>Results: <%= results %></p>
+    <div class="container">
+        <h1>I-beam Calculator Flask App Calculation</h1>
+        
+        <div class="result-section">
+            <div class="result-row">
+                <span class="result-label">Sigma:</span>
+                <span class="result-value"><%= sigma %> MPa</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Force Applied:</span>
+                <span class="result-value"><%= forceApplied %> N</span>
+            </div>
+            <div class="result-row">
+                <span class="result-label">Beam Thickness:</span>
+                <span class="result-value"><%= beamThickness %> mm</span>
+            </div>
+        </div>
+        
+        <h2>Results:</h2>
+        <div class="results-container">
+            <% for (const item of results) { %>
+            <div class="result-box">
+                <div class="result-row">
+                    <span class="result-label">Height:</span>
+                    <span class="result-value"><%= item.height %> mm</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Width:</span>
+                    <span class="result-value"><%= item.width %> mm</span>
+                </div>
+                <div class="result-row">
+                    <span class="result-label">Distance:</span>
+                    <span class="result-value"><%= item.distance %> mm</span>
+                </div>
+            </div>
+            <% } %>
+        </div>
+        
+        <form>
+            <input type="submit" value="Return to Home" class="btn">
+        </form>
+    </div>
 </body>
 </html>
