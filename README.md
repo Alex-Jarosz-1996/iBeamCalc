@@ -16,4 +16,18 @@ http://localhost:3000
 Enter all values as desired.
 
 ## Docker
-TBD
+The program can be built and ran through Docker with the following steps:
+1. Build the docker image:
+```
+docker build -t ibeam-calc-nodejs-app .
+```
+
+2. Run the docker container:
+```
+docker run -p 3000:3000 ibeam-calc-nodejs-app
+```
+
+The program can be accessed in thr browser in the following address:
+```
+http://localhost:3000
+```
