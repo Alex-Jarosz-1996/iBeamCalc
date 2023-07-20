@@ -1,6 +1,7 @@
 // app.js
 const express = require('express');
 const app = express();
+app.set('view engine', 'ejs'); // Set EJS as the view engine
 const path = require('path');
 const bodyParser = require('body-parser'); // Require body-parser
 const ibeam = require('./ibeamCalc'); // Assuming ibeamCalc.js is in the same directory as app.js
@@ -40,7 +41,12 @@ app.post('/', (req, res) => {
   console.log(results); // Example: Display the results of the ibeam function
 
   // Respond with a confirmation message or redirect to another page
-  res.sendFile(path.join(__dirname, 'views', 'distance.html'));
+  res.render('distance', {
+    sigma: sigma,
+    forceApplied: forceApplied,
+    beamThickness: beamThickness,
+    results: results
+  });
 });
 
 // Start the server
