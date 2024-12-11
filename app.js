@@ -21,13 +21,13 @@ app.get('/', (req, res) => {
 // Define the POST request route for handling the form submission of
 // ibeam calculation
 app.post('/', (req, res) => {
-  const sigma = req.body.sigma;
-  const forceApplied = req.body.force_applied;
-  const beamThickness = req.body.beam_thick;
-  const numDistances = req.body.num_distances;
+  const sigma = parseFloat(req.body.sigma);
+  const forceApplied = parseFloat(req.body.force_applied);
+  const beamThickness = parseFloat(req.body.beam_thick);
+  const numDistances = parseFloat(req.body.num_distances);
   const distances = Array.from({ length: numDistances }, (_, i) => {
     const distance = parseFloat(req.body[`distance${i + 1}`]);
-    return isNaN(distance) ? 0 : distance;
+    return isNaN(distance) ? 0 : parseFloat(distance);
   });
 
   // ibeam calculation

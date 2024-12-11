@@ -29,7 +29,8 @@ function ibeam(sigma, forceApplied, beamThick, distances) {
           let zInt = ix / y;
   
           // check to see if zInt <= zShear or >= tol * zShear since this is not ideal
-          if (zInt <= zShear || zInt >= tol * zShear) {
+          // if (zInt <= zShear || zInt >= tol * zShear) {
+          if (zInt <= zShear) {
             zInt = 0;
           }
   
